@@ -1,0 +1,6 @@
+<!--pages/Tabars/Classify/index.wxml-->
+<text>pages/Tabars/Classify/index.wxml</text>
+<mp-dialog title="ces" show="{{true}}">
+
+<view>test content</view>
+</mp-dialog>

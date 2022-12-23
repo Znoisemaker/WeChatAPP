@@ -1,0 +1,58 @@
+/* pages/Tabars/Home/index.wxss */
+.Home-userinfo-free{
+  width: calc(100% - 50px);
+  height: 58px;
+  background-color: #FFB738;
+  color: #141413;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 58px;
+  text-align: center;
+  margin-left: 25px;
+  border-radius: 10px;
+}
+.Home-userInfo-bottom-box-item{
+  margin-left: 14px;
+  background-color: #292827;
+  width: calc(calc(100% - 60px) / 3);
+height: 133px;
+border-radius: 5px;
+}
+.Home-userInfo-bottom-box {
+  /* width: 100%; */
+  height: calc(100% - 57px) ;
+  background-color: #141413;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 4px 0 4px;
+}
+.Home-userInfo-Top-box-left{
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+.Home-userInfo-Top-box{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 57px;
+  margin: 0 23px 0 23px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #EDEDED;
+  /* font-size: large; */
+}
+
+.slide-image {
+  width: 100%;
+  background-color: yellowgreen;
+height: 100%;
+ }
+ .Home-userInfo-box{
+   margin: 25px;
+   background-color: #2b2b2b;
+   border-radius: 12px;
+   height: 226px;
+ }

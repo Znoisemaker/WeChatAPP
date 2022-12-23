@@ -1,0 +1,31 @@
+<!--pages/Tabars/Home/index.wxml-->
+<swiper style="height: 302px;;" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="{{activeColor}}">
+  <view wx:for="{{imgUrls}}" wx:key="idx" wx:for-item="item">
+    <swiper-item style="background-color: aqua;">
+      <image src="{{item.url}}" mode="scaleToFill" class="slide-image" />
+    </swiper-item>
+  </view>
+</swiper>
+<view class="Home-userInfo-box">
+  <view class="Home-userInfo-Top-box">
+    <view class="Home-userInfo-Top-box-left">
+      <image style="width: 30px;height: 30px;" src="http://appfile.noisemaker.cn/PSEL2iyso27m0sANpWPAS9fA2oD1hEKS/639f290b402516619a7eac2020221220135327.jpg"></image>
+      <view>Noisemaker</view>
+    </view>
+    <view style="font-weight: 600;"> <text style="font-size: 12px;margin-right: 2px;">积分:</text><text>100</text>
+    </view>
+  </view>
+
+  <view class="Home-userInfo-bottom-box">
+    <view class="Home-userInfo-bottom-box-item"></view>
+    <view class="Home-userInfo-bottom-box-item"></view>
+    <view class="Home-userInfo-bottom-box-item"></view>
+  </view>
+</view>
+
+<view class="Home-userinfo-free" >熔化多余组件为积分 </view>
+
+
+
+<view bindtap="getSmsmMethod">获取验证码</view>
+<view bindtap="bandingMethod">登录</view>
