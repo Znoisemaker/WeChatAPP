@@ -1,6 +1,5 @@
 <!--pages/Tabars/Classify/index.wxml-->
-<text>pages/Tabars/Classify/index.wxml</text>
-<mp-dialog title="ces" show="{{true}}">
-
-<view>test content</view>
-</mp-dialog>
+<view class="list_bg">
+ <view class="list_item" wx:for="{{items}}" wx:key="item">
+ </view>
+</view>

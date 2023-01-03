@@ -3,9 +3,9 @@ const AV = require('./libs/av-core-min.js');
 var WXBizDataCrypt = require('./libs/WXBizDataCrypt.js')
 const adapters = require('./libs/leancloud-adapters-weapp.js');
 const baseUrlString = "https://appapi.noisemaker.cn"
-const appId = "wx816f58b1a166f36b"
-const appSecret = "2c7d273120b72ee86e44be86e4f8534d"
-const grant_type = "authorization_code"
+// const appId = "wx816f58b1a166f36b"
+// const appSecret = "2c7d273120b72ee86e44be86e4f8534d"
+// const grant_type = "authorization_code"
 // const user = AV.User.current();
 
 AV.setAdapters(adapters);
@@ -35,32 +35,7 @@ App({
       }
     })
   },
-  GetUniIdMEthod: function () {
-    wx.login({
-      success: (res) => {
-        // console.log(res)
-        wx.request({
-          url: 'https://share.noisemaker.cn/1.1/functions/getWXUnid',
-          method: "POST",
-          header: {
-            "X-LC-Id": "hMDz4OdyFH3jxQUw9lcpDumt-gzGzoHsz",
-            "X-LC-Key": "b35EeYA2mTQb1YyXygFL1jbd",
-            "Content-Type": "application/json"
-          },
-          data: {
-            "js_code": res.code
-          },
-          success:(rr) =>{
-            // console.log("测试")
-console.log(rr)
 
-console.log(rr.data.result)
-          } 
-        })
-
-      },
-    })
-  },
   //   bandingMethod:function (){
   // // wx.login({
   // //   success: (res) => {
@@ -132,6 +107,63 @@ console.log(rr.data.result)
   // //     })
   //    },
   onLaunch() {
+// this.bangdingUnidInfo()
+
+    wx.login({
+      success: (res) => {
+        // console.log(res)
+        wx.request({
+          url: 'https://share.noisemaker.cn/1.1/functions/getWXUnid',
+          method: "POST",
+          header: {
+            "X-LC-Id": "hMDz4OdyFH3jxQUw9lcpDumt-gzGzoHsz",
+            "X-LC-Key": "b35EeYA2mTQb1YyXygFL1jbd",
+            "Content-Type": "application/json"
+          },
+          data: {
+            "js_code": res.code
+          },
+          success: (rr) => {
+            // console.log("测试")
+            let unionid = rr.data.result.unionid
+            let uid = rr.data.result.openid
+            let session_key = rr.data.result.session_key
+
+   const thirdPartyData = {
+     access_token:session_key,
+     openid:uid,
+     unionid:unionid
+   }
+   AV.User.loginWithAuthData(thirdPartyData,"weixin",{failOnNotExist:true}).then((s) => {
+console.log("login Success")
+   },error => {
+     this.bangdingUnidInfo(thirdPartyData)
+    console.log("login fails")
+   })
+
+        //     const query = new AV.Query('_User')
+        //     query.equalTo('authData.uid', unionid)
+        //     query.find().then((_User) => {
+
+        //  if (JSON.stringify(_User) != "[]") { //直接登录
+        //   console.log( JSON.stringify(_User))
+        //  }else{ //走绑定操作
+
+        //  }
+        //     }, (error) => {
+        //       console.log(error)
+        //     })
+
+
+            console.log(rr.data.result)
+          }
+        })
+
+      },
+    })
+
+
+  
 
     // AV.User.loginWithMiniApp().then(user => {
     //   // 设置并保存手机号
@@ -180,26 +212,29 @@ console.log(rr.data.result)
 
 
     // })
-    // 登录
-    // wx.login({
-    //   success: res => {
-    //     console.log(res)
-    //     // 发送 res.code 到后台换取 openId, sessionKey, unionId
-    //   }
-    // })
-    //获取Unicoid
-    // adapters.getAuthInfo({
-    //   preferUnionId: true,
-    // }).then(authInfo => {
-    //   // console.log(authInfo)
-    //    AV.User.loginWithMiniApp(authInfo).then(userInfo =>{
-    //     console.log(userInfo)
-    //   });
-    // });
+
 
 
 
   },
+  bangdingUnidInfo(info) {
+
+    AV.User.logInWithMobilePhoneSmsCode('+8618930532656', '866476').then((user) => {
+      // 登录成功
+
+      if (user) {
+        user.associateWithAuthData(info,"weixin")
+      }
+    }, (error) => {
+      // 验证码不正确
+    });
+
+
+   
+
+
+  },
+
   globalData: {
     userInfo: null,
     baseUrl: baseUrlString

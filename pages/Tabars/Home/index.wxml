@@ -17,7 +17,7 @@
   </view>
 
   <view class="Home-userInfo-bottom-box">
-    <view class="Home-userInfo-bottom-box-item"></view>
+    <view class="Home-userInfo-bottom-box-item" bindtap="GotoUserIconsBorderTap"></view>
     <view class="Home-userInfo-bottom-box-item"></view>
     <view class="Home-userInfo-bottom-box-item"></view>
   </view>

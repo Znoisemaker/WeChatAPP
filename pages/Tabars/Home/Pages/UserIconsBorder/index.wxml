@@ -1,0 +1,3 @@
+<view class="list_bg">
+<view class="list_item" wx:for="{{list}}" wx:key="index"></view>
+</view>

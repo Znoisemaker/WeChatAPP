@@ -5,7 +5,21 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    user_items: [{
+      title: "我的积分",
+      count: 0
+    }, {
+      title: "头像框",
+      count: 0
+    }, {
+      title: "简版组件",
+      count: 0
+    }, {
+      title: "卡片",
+      count: 0
+    }],
+    tools: [{ title: "", image: "" }, 
+    { title: "", image: "" }, { title: "", image: ""}]
   },
 
   /**

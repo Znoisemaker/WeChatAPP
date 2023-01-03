@@ -1,13 +1,11 @@
-// pages/Tabars/Classify/index.js
+// pages/Tabars/Home/Pages/UserIconsBorder/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  items:[
-    {},{},{}
-  ]
+  list:[{},{},{},{},{}]
   },
 
   /**
@@ -28,15 +26,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    if (typeof this.getTabBar === 'function' &&
-      this.getTabBar()) {
-      this.getTabBar().setData({
-        //唯一标识（其它设置不同的整数）  
-        selected: 1
-      })
-    }
-  },
 
+  },
 
   /**
    * 生命周期函数--监听页面隐藏

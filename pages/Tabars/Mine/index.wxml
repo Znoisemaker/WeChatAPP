@@ -1,2 +1,27 @@
 <!--pages/Tabars/Mine/index.wxml-->
-<text>pages/Tabars/Mine/index.wxml</text>
+<view>
+  <image style="width: 100%;height: 180px;border-radius: 0 0 38px  38px;background-color: blanchedalmond;z-index: 0;position: relative;" mode="aspectFit" ></image>
+
+  <view class="userInfo_box">
+  <image class="userInfo_icon"></image>
+  <view class="userInfo_Name"> Noisemaker</view>
+
+  <view class="userInfo_items_box">
+  <view wx:for="{{user_items}}" wx:key="index" class="userInfo_item">
+  <view>{{item.count}}</view>
+  <view style="font-size: 13px;font-weight: 500;">{{item.title}}</view>
+  </view>
+  
+  </view>
+  </view>
+
+
+<view class="exchange_History_box">
+<view class="exchange_History_title">兑换记录</view>
+</view>
+<view class="UserInfo_tool_box"></view>
+<view class="UserInfo_tool_item" wx:for="{{tools}}" wx:key="index"></view>
+
+</view>
+
+

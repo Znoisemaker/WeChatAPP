@@ -39,6 +39,12 @@ Page({
     console.log(1)
   //  app.getSmsmMethod()
   },
+  GotoUserIconsBorderTap(){
+    wx.navigateTo({
+      url: '/pages/Tabars/Home/Pages/UserIconsBorder/index'
+    })
+  },
+  
    bandingMethod(){
      console.log(app.AV)
   // app.bandingMethod()

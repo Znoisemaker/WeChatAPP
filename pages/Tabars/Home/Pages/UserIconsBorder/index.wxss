@@ -1,12 +1,12 @@
-/* pages/Tabars/Classify/index.wxss */
+/* pages/Tabars/Home/Pages/UserIconsBorder/index.wxss */
 .list_bg{
   display: flex;
   flex-flow: wrap;
   margin-top: 20px;
 }
 .list_item{
-  width: calc(calc(100% - 60px) / 2);
-  height: 210px;
+  width: calc(calc(100% - 60px) / 3);
+  height: 150px;
   background-color: red;
   margin-left: 20px;
   margin-bottom: 20px;

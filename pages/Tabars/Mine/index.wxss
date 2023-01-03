@@ -1,1 +1,74 @@
 /* pages/Tabars/Mine/index.wxss */
+.UserInfo_tool_item{
+  
+}
+.UserInfo_tool_box{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: calc(100% - 40px);
+  margin-left: 20px;
+  background-color: #201F1E;
+  border-radius: 15px;
+  height: 92px;
+  margin-top: 20px;
+}
+.exchange_History_title{
+  padding-left: 14px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #EDEDED;
+  line-height: 40px;
+}
+.exchange_History_box{
+  background-color: #201F1E;
+  border-radius: 15px;
+  width: calc(100% - 40px);
+  margin-left: 20px;
+  height: 141px;
+  margin-top: 20px;
+}
+.userInfo_item{
+height: 96px;
+width: calc(25% - 5px) ;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+font-size: 20px;
+font-weight: 600;
+}
+.userInfo_items_box{
+  height: 96px;
+  width: 100%;
+  /* background-color: salmon; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.userInfo_Name{
+  width: 100%;
+  line-height: 40px;
+  text-align: center;
+   font-size: 18px;
+   font-weight: 500;
+}
+.userInfo_box{
+  width: calc(100% - 40px);
+  height: 180px;
+  background-color: #201F1E;
+  border-radius: 15px;
+  margin-left: 20px;
+  margin-top: -60px;
+  z-index: 100;
+  position: relative;
+  color: #EDEDED;
+}
+.userInfo_icon{
+  margin-left: calc(50% - 36px);
+  width: 72px;
+  height: 72px;
+  margin-top: -36px;
+  background-color: royalblue;
+  border-radius: 36px;
+}
