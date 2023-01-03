@@ -7,13 +7,17 @@
     "pages/index/index",
     "pages/logs/logs",
     "custom-tab-bar/index",
-    "pages/Tabars/Home/Pages/UserIconsBorder/index"
+    "pages/Tabars/Home/Pages/UserIconsBorder/index",
+    "pages/Tabars/Mine/Pages/SortPage/index",
+    "pages/Tabars/Mine/Pages/AddressPage/index",
+    "pages/Tabars/Mine/Pages/KefuPage/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#000000",
     "navigationBarTitleText": "",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "white",
+    "initialRenderingCache": "static"
   },
   "tabBar": {
     "list": [

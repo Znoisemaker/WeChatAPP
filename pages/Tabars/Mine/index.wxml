@@ -19,9 +19,13 @@
 <view class="exchange_History_box">
 <view class="exchange_History_title">兑换记录</view>
 </view>
-<view class="UserInfo_tool_box"></view>
-<view class="UserInfo_tool_item" wx:for="{{tools}}" wx:key="index"></view>
+<view class="UserInfo_tool_box">
+<view bindtap="ToolClickMethod" class="UserInfo_tool_item" wx:for="{{tools}}" wx:key="index" data-index="{{index}}">
+<image style="height: 20px;width: 20px;margin-bottom: 5px;" src="{{item.image}}"></image>
+<view>{{item.title}}</view>
 
+</view>
+</view>
 </view>
 
 

@@ -1,10 +1,17 @@
 /* pages/Tabars/Mine/index.wxss */
 .UserInfo_tool_item{
-  
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+  width: calc(33% - 5px );
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
 }
 .UserInfo_tool_box{
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: calc(100% - 40px);
   margin-left: 20px;

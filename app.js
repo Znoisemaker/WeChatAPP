@@ -8,13 +8,7 @@ const baseUrlString = "https://appapi.noisemaker.cn"
 // const grant_type = "authorization_code"
 // const user = AV.User.current();
 
-AV.setAdapters(adapters);
-AV.init({
-  appId: 'hMDz4OdyFH3jxQUw9lcpDumt-gzGzoHsz',
-  appKey: 'b35EeYA2mTQb1YyXygFL1jbd',
-  // 请将 xxx.example.com 替换为你的应用绑定的自定义 API 域名
-  serverURLs: "https://appapi.noisemaker.cn",
-});
+
 App({
   getSmsmMethod: function () {
 
@@ -108,7 +102,13 @@ App({
   //    },
   onLaunch() {
 // this.bangdingUnidInfo()
-
+AV.setAdapters(adapters);
+AV.init({
+  appId: 'hMDz4OdyFH3jxQUw9lcpDumt-gzGzoHsz',
+  appKey: 'b35EeYA2mTQb1YyXygFL1jbd',
+  // 请将 xxx.example.com 替换为你的应用绑定的自定义 API 域名
+  serverURLs: "https://appapi.noisemaker.cn",
+});
     wx.login({
       success: (res) => {
         // console.log(res)

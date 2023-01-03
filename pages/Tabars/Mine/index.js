@@ -18,8 +18,23 @@ Page({
       title: "卡片",
       count: 0
     }],
-    tools: [{ title: "", image: "" }, 
-    { title: "", image: "" }, { title: "", image: ""}]
+    tools: [
+      {
+        title: "积分明细",
+        image: "/pages/images/Sort.png",
+        pages: "/pages/Tabars/Mine/Pages/SortPage/index"
+      },
+      {
+        title: "地址管理",
+        image: "/pages/images/Address.png",
+        pages: "/pages/Tabars/Mine/Pages/AddressPage/index"
+      },
+      {
+        title: "联系客服",
+        image: "/pages/images/kefu.png",
+        pages: "/pages/Tabars/Mine/Pages/KefuPage/index"
+      }]
+
   },
 
   /**
@@ -54,6 +69,15 @@ Page({
    */
   onHide() {
 
+  },
+  ToolClickMethod(e){
+    //1 积分 2 地址 3 客服
+    let index =  e.currentTarget.dataset.index
+    let pages = this.data.tools[index].pages
+    wx.navigateTo({
+      url: pages
+    })
+ console.log()
   },
 
   /**
