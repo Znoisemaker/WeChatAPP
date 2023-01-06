@@ -1,0 +1,18 @@
+<view class="editAddres_bg">
+  <view>收件人姓名</view>
+  <view class="input_bg">
+    <input  class="inputStyle" placeholder-style="font-size: 14px;" placeholder="请输入收件人姓名" bindinput="UserNameInput" value="{{userName}}" />
+  </view>
+  <view style="margin-top: 20px;">收件人手机号</view>
+  <view class="input_bg">
+    <input  type="number" class="inputStyle" maxlength="11" placeholder-style="font-size: 14px;" placeholder="请输入收件人手机号" bindinput="UserMobileInput" value="{{userMobile}}"  />
+  </view>
+  <view style="margin-top: 20px;">收件人地址</view>
+  <address-selecter   address= "{{address}}"  style="background-color: blue;width: 100%;height: 400px;" bind:select="addressSelecter" ></address-selecter>
+  <textarea value="{{userDetail}}" class="address_detail" bindinput="AddresDetailMethod" placeholder="请输入详细地址"></textarea>
+  <view  class="Edit_Address_bottom" wx:if="{{isnew == 'false'}}" >
+    <view bindtap="AddressDeleMethod" class="Address_dele">删除该地址</view>
+    <view bindtap="AddressChangeMethod" class="Address_add">完成</view>
+  </view>
+  <view  bindtap="NewAddAddressMethod" class="Newaddress_add" wx:if="{{isnew == 'true'}}">完成</view>
+</view>

@@ -1,26 +1,22 @@
-
+// pages/Tabars/Home/Pages/Cards/index.js
 import AV from '../../../../../libs/av-core-min.js'
-
 const app = getApp()
 Page({
-  
+
   /**
    * 页面的初始数据
    */
   data: {
-    list: [],
-    iconexchangeArr: []
+    list: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
- 
-   this.loadInfo()
+this.loadInfo()
   },
   loadInfo() {
-    
     let userinfoid = app.globalData.userinfoid
     let iconQuery = new AV.Query('ExchangeChipsList')
     iconQuery.find().then((rewardList) => {
@@ -39,6 +35,9 @@ Page({
         temp.isHoliday = item.attributes.isHoliday
         temp.leave = item.attributes.leave
         temp.type = item.attributes.type
+        temp.width = item.attributes.width
+        temp.height = item.attributes.height
+        temp.size = item.attributes.Size
         if (item.attributes.DemoImage) {
           temp.DemoImage = item.attributes.DemoImage.attributes.url
         }
@@ -64,6 +63,7 @@ Page({
   // countQuery.include('ActivityId')
   countQuery.find().then((Arr) =>{
     let  getList = Array.from(Arr)
+    console.log(getList)
     var getArr = []
     for (var i = 0;i < getList.length;i++){
       let gTemp =  getList[i]
@@ -105,6 +105,9 @@ Page({
         let jtem = getArr[j]
         if (item.obj == jtem.obj){
           item.isHave = true
+          if (jtem.type == 9){
+            console.log(jtem.count)
+          }
           item.count = jtem.count
           ttempArr.push(item)
         }
@@ -113,10 +116,11 @@ Page({
     var iconArr = []
     for (var  i = 0; i < temArr.length;i++){
       let item = temArr[i]
-      if (item.type == 1 || item.type == 7){
+      if (item.type == 0 || item.type == 8){
         iconArr.push(item)
       }
     }
+    console.log(iconArr)
     
    this.setData({
    list:iconArr
@@ -130,7 +134,7 @@ Page({
     })
 
 
-    let PromiseArr = []
+    // let PromiseArr = []
   
     // console.log(userinfoid)
 
@@ -158,8 +162,8 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-
   onReady() {
+
   },
 
   /**

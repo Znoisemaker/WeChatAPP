@@ -1,10 +1,12 @@
 // pages/Tabars/Mine/index.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    userinfo:'',
     user_items: [{
       title: "我的积分",
       count: 0
@@ -33,7 +35,8 @@ Page({
         title: "联系客服",
         image: "/pages/images/kefu.png",
         pages: "/pages/Tabars/Mine/Pages/KefuPage/index"
-      }]
+      }],
+      userfo:''
 
   },
 
@@ -41,7 +44,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+   
   },
 
   /**
@@ -55,6 +58,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
+     this.setData({
+      userfo:app.globalData.userInfo
+     })
     if (typeof this.getTabBar === 'function' &&
       this.getTabBar()) {
       this.getTabBar().setData({
@@ -77,7 +83,7 @@ Page({
     wx.navigateTo({
       url: pages
     })
- console.log()
+
   },
 
   /**

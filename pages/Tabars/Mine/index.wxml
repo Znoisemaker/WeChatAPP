@@ -3,9 +3,8 @@
   <image style="width: 100%;height: 180px;border-radius: 0 0 38px  38px;background-color: blanchedalmond;z-index: 0;position: relative;" mode="aspectFit" ></image>
 
   <view class="userInfo_box">
-  <image class="userInfo_icon"></image>
-  <view class="userInfo_Name"> Noisemaker</view>
-
+  <image src="{{userfo.profileImage.attributes.url}}" class="userInfo_icon"></image>
+  <view class="userInfo_Name"> {{userfo.nickname}}</view>
   <view class="userInfo_items_box">
   <view wx:for="{{user_items}}" wx:key="index" class="userInfo_item">
   <view>{{item.count}}</view>

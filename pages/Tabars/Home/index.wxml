@@ -9,17 +9,19 @@
 <view class="Home-userInfo-box">
   <view class="Home-userInfo-Top-box">
     <view class="Home-userInfo-Top-box-left">
-      <image style="width: 30px;height: 30px;" src="http://appfile.noisemaker.cn/PSEL2iyso27m0sANpWPAS9fA2oD1hEKS/639f290b402516619a7eac2020221220135327.jpg"></image>
-      <view>Noisemaker</view>
+      <image style="width: 30px;height: 30px;border-radius: 15px;margin-right: 5px;" src="{{uInfo.profileImage.attributes.url}}"></image>
+      <view>{{uInfo.nickname}}</view>
     </view>
-    <view style="font-weight: 600;"> <text style="font-size: 12px;margin-right: 2px;">积分:</text><text>100</text>
+    <view style="font-weight: 600;"> <text style="font-size: 12px;margin-right: 2px;">积分:</text><text>{{Sort}}</text>
     </view>
   </view>
 
   <view class="Home-userInfo-bottom-box">
-    <view class="Home-userInfo-bottom-box-item" bindtap="GotoUserIconsBorderTap"></view>
-    <view class="Home-userInfo-bottom-box-item"></view>
-    <view class="Home-userInfo-bottom-box-item"></view>
+    <view wx:for="{{Items}}" wx:key="index" data-index="{{index}}" class="Home-userInfo-bottom-box-item" bindtap="GotoUserIconsBorderTap">
+    <image style="width: 65px;height: 83px;" src="{{item.images}}" mode="aspectFit"/>
+    <view>{{item.title}}</view>
+    </view>
+    
   </view>
 </view>
 

@@ -1,0 +1,16 @@
+/* pages/Tabars/Home/Pages/Cards/index.wxss */
+.list_bg{
+  display: flex;
+  flex-flow: wrap;
+  margin-top: 20px;
+}
+.item_box{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+  width: calc(50% - 40px);
+  margin-left: 26px;
+  height: 290px;
+  color: #C4C4C4;
+}

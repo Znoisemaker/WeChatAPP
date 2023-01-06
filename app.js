@@ -1,15 +1,28 @@
 // app.js
 const AV = require('./libs/av-core-min.js');
-var WXBizDataCrypt = require('./libs/WXBizDataCrypt.js')
+// var WXBizDataCrypt = require('./libs/WXBizDataCrypt.js')
 const adapters = require('./libs/leancloud-adapters-weapp.js');
 const baseUrlString = "https://appapi.noisemaker.cn"
 // const appId = "wx816f58b1a166f36b"
 // const appSecret = "2c7d273120b72ee86e44be86e4f8534d"
 // const grant_type = "authorization_code"
 // const user = AV.User.current();
-
+AV.setAdapters(adapters);
+AV.init({
+  appId: 'hMDz4OdyFH3jxQUw9lcpDumt-gzGzoHsz',
+  appKey: 'b35EeYA2mTQb1YyXygFL1jbd',
+  // 请将 xxx.example.com 替换为你的应用绑定的自定义 API 域名
+  serverURLs: "https://appapi.noisemaker.cn",
+});
 
 App({
+  globalData: {
+    userInfo: '',
+    baseUrl: baseUrlString,
+    userinfoid:''
+
+
+  },
   getSmsmMethod: function () {
 
     console.log(1)
@@ -101,14 +114,8 @@ App({
   // //     })
   //    },
   onLaunch() {
-// this.bangdingUnidInfo()
-AV.setAdapters(adapters);
-AV.init({
-  appId: 'hMDz4OdyFH3jxQUw9lcpDumt-gzGzoHsz',
-  appKey: 'b35EeYA2mTQb1YyXygFL1jbd',
-  // 请将 xxx.example.com 替换为你的应用绑定的自定义 API 域名
-  serverURLs: "https://appapi.noisemaker.cn",
-});
+    // this.bangdingUnidInfo()
+   
     wx.login({
       success: (res) => {
         // console.log(res)
@@ -129,33 +136,32 @@ AV.init({
             let uid = rr.data.result.openid
             let session_key = rr.data.result.session_key
 
-   const thirdPartyData = {
-     access_token:session_key,
-     openid:uid,
-     unionid:unionid
-   }
-   AV.User.loginWithAuthData(thirdPartyData,"weixin",{failOnNotExist:true}).then((s) => {
-console.log("login Success")
-   },error => {
-     this.bangdingUnidInfo(thirdPartyData)
-    console.log("login fails")
-   })
+            const thirdPartyData = {
+              access_token: session_key,
+              openid: uid,
+              unionid: unionid
+            }
+            AV.User.loginWithAuthData(thirdPartyData, "weixin", { failOnNotExist: true }).then((s) => {
+              this.getCurrentUserInfo(s.id)
+              // console.log("login Success")
+            }, error => {
+              this.bangdingUnidInfo(thirdPartyData)
+              // console.log("login fails")
+            })
 
-        //     const query = new AV.Query('_User')
-        //     query.equalTo('authData.uid', unionid)
-        //     query.find().then((_User) => {
+            //     const query = new AV.Query('_User')
+            //     query.equalTo('authData.uid', unionid)
+            //     query.find().then((_User) => {
 
-        //  if (JSON.stringify(_User) != "[]") { //直接登录
-        //   console.log( JSON.stringify(_User))
-        //  }else{ //走绑定操作
+            //  if (JSON.stringify(_User) != "[]") { //直接登录
+            //   console.log( JSON.stringify(_User))
+            //  }else{ //走绑定操作
 
-        //  }
-        //     }, (error) => {
-        //       console.log(error)
-        //     })
-
-
-            console.log(rr.data.result)
+            //  }
+            //     }, (error) => {
+            //       console.log(error)
+            //     })
+            // console.log(rr.data.result)
           }
         })
 
@@ -163,7 +169,7 @@ console.log("login Success")
     })
 
 
-  
+
 
     // AV.User.loginWithMiniApp().then(user => {
     //   // 设置并保存手机号
@@ -217,28 +223,39 @@ console.log("login Success")
 
 
   },
+  getCurrentUserInfo(userid){
+    let query = new AV.Query('UserInfo')
+    let user = AV.Object.createWithoutData("_User",userid)
+    query.equalTo("userId",user)
+    query.first().then((userinfo) =>{
+  //  console.log(userinfo.id)
+ 
+   this.globalData.userInfo = userinfo._serverData
+   this.globalData.userinfoid = userinfo.id
+   if (this.userInfoCallback){
+    this.userInfoCallback()
+   }
+    },(error) =>{
+   
+    })
+  },
   bangdingUnidInfo(info) {
 
     AV.User.logInWithMobilePhoneSmsCode('+8618930532656', '866476').then((user) => {
       // 登录成功
 
       if (user) {
-        user.associateWithAuthData(info,"weixin")
+        user.associateWithAuthData(info, "weixin")
       }
     }, (error) => {
       // 验证码不正确
     });
 
 
-   
 
-
-  },
-
-  globalData: {
-    userInfo: null,
-    baseUrl: baseUrlString
 
 
   }
+
+
 })

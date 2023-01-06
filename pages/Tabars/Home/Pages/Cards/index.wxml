@@ -1,0 +1,7 @@
+<!--pages/Tabars/Home/Pages/Cards/index.wxml-->
+<view class="list_bg">
+<view class="item_box" wx:for="{{list}}" wx:key="index">
+<image mode="aspectFill" style="width: 100%;height: calc(100% - 44px);background-color: crimson;" src="{{item.dataImage}}"></image>
+<view style="margin-top: 5px;">已获得：{{item.count > 0 ? item.count : 0}}张</view>
+</view>
+</view>

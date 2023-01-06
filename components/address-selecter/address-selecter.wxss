@@ -1,0 +1,42 @@
+.chooseAddress_text{
+ margin-top: 10px;
+  font-size: 14px;
+  width: calc(100% - 10px);
+  background-color: #1D1D1C;
+  height: 46px;
+  line-height: 46px;
+  padding-left: 10px;
+  border-radius: 10px;
+  font-weight: 500;
+  color: #EDEDED;
+}
+
+.picker-view {
+  color: black;
+  width: 100%;
+  display: flex;
+  z-index:12;
+  background-color: #fff;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0rpx;
+  left: 0rpx;
+  height: 40vh;
+}
+
+.picker-item {
+  line-height: 70rpx;
+  margin-left: 5rpx;
+  margin-right: 5rpx;
+  text-align: center;
+}
+
+.picker-view .cancel_text{
+  color: #1D1D1C;
+}
+
+.picker-view .sure_text{
+  color: #1D1D1C;
+}

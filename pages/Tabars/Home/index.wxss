@@ -15,8 +15,14 @@
   margin-left: 14px;
   background-color: #292827;
   width: calc(calc(100% - 60px) / 3);
-height: 133px;
-border-radius: 5px;
+ height: 133px;
+ border-radius: 5px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ flex-direction: column;
+ color: #ffffff;
+ font-size: 15px;
 }
 .Home-userInfo-bottom-box {
   /* width: 100%; */

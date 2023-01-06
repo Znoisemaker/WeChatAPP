@@ -1,2 +1,16 @@
 <!--pages/Tabars/Mine/Pages/AddressPage/index.wxml-->
-<text>pages/Tabars/Mine/Pages/AddressPage/index.wxml</text>
+<view>
+  <view bindtap="EditAddressClick" data-index="{{index}}" wx:for="{{address}}" wx:key="index" class="address_item">
+    <view class="address_item_left">
+      <view class="address_item_left_top">
+        <view>{{item.name}}
+        </view>
+        <view>{{item.phoneNumber}}
+        </view>
+      </view>
+      <view>{{item.address}},{{item.detail}}</view>
+    </view>
+    <view class="address_item_right">编辑</view>
+  </view>
+</view>
+<view bindtap="ToEditAddress" class="add_address">添加收货地址</view>

@@ -1,0 +1,8 @@
+<!--pages/Tabars/Home/Pages/AlumsList/index.wxml-->
+<view class="list_bg">
+  <view wx:for="{{list}}" wx:key="index" class="{{item.size == '2*4' ? 'item_width':'item_width_half'}} ">
+    <image mode="aspectFit" style="width: 100%;height: calc(100% - 73px);" src="{{item.CustomImage}}"></image>
+    <view>{{item.ExchangeName}}</view>
+    <view>已获得{{item.count > 0 ? item.count : 0}}</view>
+  </view>
+</view>

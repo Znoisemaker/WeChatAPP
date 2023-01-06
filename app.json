@@ -10,7 +10,10 @@
     "pages/Tabars/Home/Pages/UserIconsBorder/index",
     "pages/Tabars/Mine/Pages/SortPage/index",
     "pages/Tabars/Mine/Pages/AddressPage/index",
-    "pages/Tabars/Mine/Pages/KefuPage/index"
+    "pages/Tabars/Mine/Pages/KefuPage/index",
+    "pages/Tabars/Home/Pages/AlumsList/index",
+    "pages/Tabars/Home/Pages/Cards/index",
+    "pages/Tabars/Mine/Pages/EditAddress/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

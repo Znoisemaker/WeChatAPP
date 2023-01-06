@@ -7,7 +7,12 @@
 .list_item{
   width: calc(calc(100% - 60px) / 3);
   height: 150px;
-  background-color: red;
   margin-left: 20px;
   margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #C4C4C4;
+  font-size: 14px;
 }
