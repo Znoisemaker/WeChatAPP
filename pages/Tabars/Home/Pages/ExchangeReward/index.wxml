@@ -17,11 +17,11 @@
     <view class="Sort_box">
       <view class="userInfoBox">
         <view style="width: 80rpx;height: 80rpx;background-color: #FF9F17;border-radius: 40rpx;">
-          <image style="margin-left: -2rpx;margin-top: -2rpx;width: 80rpx;height: 80rpx;background-color: blueviolet;border-radius: 40rpx;"></image>
+          <image style="margin-left: -2rpx;margin-top: -2rpx;width: 80rpx;height: 80rpx;background-color: blueviolet;border-radius: 40rpx; " src="{{userInfo.profileImage.attributes.url}}"></image>
         </view>
-        <view style="margin-left: 10rpx;">Noisemaker</view>
+        <view style="margin-left: 10rpx;">{{userInfo.nickname}}</view>
       </view>
-      <view style="font-size: 24rpx;font-weight: 600;margin-right: 10rpx;line-height: 60rpx;">积分:<text style="font-size: 32rpx;font-size: 500;">100</text></view>
+      <view style="font-size: 24rpx;font-weight: 600;margin-right: 10rpx;line-height: 60rpx;">积分:<text style="font-size: 32rpx;font-size: 500;">{{currentSort}}</text></view>
     </view>
     <view class="Sege_box">
       <block wx:for="{{segeArr}}" wx:key="key" data-index="{{index}}">

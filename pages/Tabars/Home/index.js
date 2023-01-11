@@ -57,7 +57,7 @@ Page({
       })
     } else {
       app.userInfoCallback = res => {
-        
+
         this.loadInfo()
         let users = app.globalData.userInfo
         this.setData({
@@ -70,13 +70,13 @@ Page({
 
 
   },
-  GotoExchangePage(){
+  GotoExchangePage() {
     wx.navigateTo({
       url: '/pages/Tabars/Home/Pages/ExchangeReward/index',
     })
   },
   loadInfo() {
-    
+
     let query = new AV.Query("ActivityUserGetForwardRecord")
     let userinfoid = app.globalData.userinfoid
     let userPoint = AV.Object.createWithoutData('UserInfo', userinfoid);

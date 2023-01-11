@@ -104,7 +104,7 @@ Page({
             let jtem = getArr[j]
             if (item.obj == jtem.obj) {
               item.isHave = true
-        
+
               item.count = jtem.count
               ttempArr.push(item)
             }

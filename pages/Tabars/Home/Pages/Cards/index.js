@@ -63,7 +63,6 @@ this.loadInfo()
   // countQuery.include('ActivityId')
   countQuery.find().then((Arr) =>{
     let  getList = Array.from(Arr)
-    console.log(getList)
     var getArr = []
     for (var i = 0;i < getList.length;i++){
       let gTemp =  getList[i]
@@ -105,9 +104,6 @@ this.loadInfo()
         let jtem = getArr[j]
         if (item.obj == jtem.obj){
           item.isHave = true
-          if (jtem.type == 9){
-            console.log(jtem.count)
-          }
           item.count = jtem.count
           ttempArr.push(item)
         }
@@ -119,9 +115,7 @@ this.loadInfo()
       if (item.type == 0 || item.type == 8){
         iconArr.push(item)
       }
-    }
-    console.log(iconArr)
-    
+    }    
    this.setData({
    list:iconArr
    })
