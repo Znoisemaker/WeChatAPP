@@ -1,5 +1,5 @@
 <!--pages/Tabars/Home/index.wxml-->
-<swiper style="height: 302px;;" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="{{activeColor}}">
+<swiper style="height: 604rpx;;" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="{{activeColor}}">
   <view wx:for="{{imgUrls}}" wx:key="idx" wx:for-item="item">
     <swiper-item style="background-color: aqua;">
       <image src="{{item.url}}" mode="scaleToFill" class="slide-image" />
@@ -9,25 +9,22 @@
 <view class="Home-userInfo-box">
   <view class="Home-userInfo-Top-box">
     <view class="Home-userInfo-Top-box-left">
-      <image style="width: 30px;height: 30px;border-radius: 15px;margin-right: 5px;" src="{{uInfo.profileImage.attributes.url}}"></image>
+      <image style="width: 60rpx;height: 60rpx;border-radius: 30rpx;margin-right: 10rpx;" src="{{uInfo.profileImage.attributes.url}}"></image>
       <view>{{uInfo.nickname}}</view>
     </view>
-    <view style="font-weight: 600;"> <text style="font-size: 12px;margin-right: 2px;">积分:</text><text>{{Sort}}</text>
+    <view style="font-weight: 600;"> <text style="font-size: 24rpx;margin-right: 4rpx;">积分:</text><text>{{Sort}}</text>
     </view>
   </view>
 
   <view class="Home-userInfo-bottom-box">
     <view wx:for="{{Items}}" wx:key="index" data-index="{{index}}" class="Home-userInfo-bottom-box-item" bindtap="GotoUserIconsBorderTap">
-    <image style="width: 65px;height: 83px;" src="{{item.images}}" mode="aspectFit"/>
+    <image style="width: 130rpx;height: 163rpx;" src="{{item.images}}" mode="aspectFit"/>
     <view>{{item.title}}</view>
     </view>
     
   </view>
 </view>
 
-<view class="Home-userinfo-free" >熔化多余组件为积分 </view>
+<view bindtap="GotoExchangePage" class="Home-userinfo-free" >熔化多余组件为积分 </view>
 
 
-
-<view bindtap="getSmsmMethod">获取验证码</view>
-<view bindtap="bandingMethod">登录</view>

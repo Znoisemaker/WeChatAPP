@@ -23,7 +23,6 @@ Page({
       let list = Array.from(rewardList)
       //  console.log(list)
       var temArr = []
-
       for (var i = 0; i < list.length; i++) {
         let item = list[i]
         //  console.log(item.attributes)
@@ -105,9 +104,7 @@ Page({
             let jtem = getArr[j]
             if (item.obj == jtem.obj) {
               item.isHave = true
-              // if (jtem.type == 9) {
-              //   // console.log(jtem.count)
-              // }
+        
               item.count = jtem.count
               ttempArr.push(item)
             }
@@ -120,7 +117,6 @@ Page({
             iconArr.push(item)
           }
         }
-        // console.log(iconArr)
 
         this.setData({
           list: iconArr

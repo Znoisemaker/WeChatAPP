@@ -70,6 +70,11 @@ Page({
 
 
   },
+  GotoExchangePage(){
+    wx.navigateTo({
+      url: '/pages/Tabars/Home/Pages/ExchangeReward/index',
+    })
+  },
   loadInfo() {
     
     let query = new AV.Query("ActivityUserGetForwardRecord")

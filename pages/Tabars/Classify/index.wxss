@@ -2,12 +2,13 @@
 .list_bg{
   display: flex;
   flex-flow: wrap;
-  margin-top: 20px;
+  margin-top: 40rpx;
 }
 .list_item{
   width: calc(calc(100% - 60px) / 2);
-  height: 210px;
-  background-color: red;
-  margin-left: 20px;
-  margin-bottom: 20px;
+  height: 420rpx;
+  background-color: #201F1E;
+  margin-left: 40rpx;
+  margin-bottom: 40rpx;
+  border-radius: 20rpx;
 }

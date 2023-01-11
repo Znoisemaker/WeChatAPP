@@ -13,7 +13,8 @@
     "pages/Tabars/Mine/Pages/KefuPage/index",
     "pages/Tabars/Home/Pages/AlumsList/index",
     "pages/Tabars/Home/Pages/Cards/index",
-    "pages/Tabars/Mine/Pages/EditAddress/index"
+    "pages/Tabars/Mine/Pages/EditAddress/index",
+    "pages/Tabars/Home/Pages/ExchangeReward/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,38 +1,38 @@
 /* pages/Tabars/Home/index.wxss */
 .Home-userinfo-free{
   width: calc(100% - 50px);
-  height: 58px;
+  height: 116rpx;
   background-color: #FFB738;
   color: #141413;
-  font-size: 16px;
+  font-size: 32rpx;
   font-weight: 500;
-  line-height: 58px;
+  line-height: 116rpx;
   text-align: center;
-  margin-left: 25px;
-  border-radius: 10px;
+  margin-left: 30rpx;
+  border-radius: 20rpx;
 }
 .Home-userInfo-bottom-box-item{
-  margin-left: 14px;
+  margin-left: 28rpx;
   background-color: #292827;
-  width: calc(calc(100% - 60px) / 3);
- height: 133px;
- border-radius: 5px;
+  width: calc(calc(100% - 120rpx) / 3);
+ height: 266rpx;
+ border-radius: 10rpx;
  display: flex;
  justify-content: center;
  align-items: center;
  flex-direction: column;
  color: #ffffff;
- font-size: 15px;
+ font-size: 20rpx;
 }
 .Home-userInfo-bottom-box {
   /* width: 100%; */
-  height: calc(100% - 57px) ;
+  height: calc(100% - 114rpx) ;
   background-color: #141413;
-  border-radius: 12px;
+  border-radius: 24rpx;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: 0 4px 0 4px;
+  padding: 0 8rpx 0 8rpx;
 }
 .Home-userInfo-Top-box-left{
   display: flex;
@@ -43,9 +43,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 57px;
-  margin: 0 23px 0 23px;
-  font-size: 16px;
+  height: 114rpx;
+  margin: 0 46rpx 0 46px;
+  font-size: 32rpx;
   font-weight: 500;
   color: #EDEDED;
   /* font-size: large; */
@@ -57,8 +57,8 @@
 height: 100%;
  }
  .Home-userInfo-box{
-   margin: 25px;
+   margin: 50rpx;
    background-color: #2b2b2b;
-   border-radius: 12px;
-   height: 226px;
+   border-radius: 24rpx;
+   height: 512rpx;
  }

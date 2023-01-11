@@ -1,0 +1,36 @@
+<!--pages/Tabars/Home/Pages/ExchangeReward/index.wxml-->
+<view class="img-view">
+  <image class="image_item" src="/pages/images/ExchangeRewardBg.png"></image>
+  <view class="pageTwo">
+    <view class="banner-swiper">
+      <swiper current='{{swiperCurrent}}'  previous-margin="{{previousmargin}}" next-margin="{{nextmargin}}" bindchange="swiperChange">
+        <block wx:for="{{segeIndex == 0 ? Cardarr: segeIndex == 1 ?iconArr:alblumArr }}" data-index="{{index}}" wx:key="key">
+          <swiper-item>
+            <view class="slide-image{{index == swiperCurrent ? ' active' : ''}}" bindchange="chuangEvent" id="{{index}}">
+              <image mode="{{segeIndex == 0 ? 'scaleToFill':'aspectFit'}}" class="card_box" src="{{ segeIndex < 2 ? item.dataImage:item.CustomImage}}"></image>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <view class="Count_box">剩余数量{{currentCount}}</view>
+    <view class="Sort_box">
+      <view class="userInfoBox">
+        <view style="width: 80rpx;height: 80rpx;background-color: #FF9F17;border-radius: 40rpx;">
+          <image style="margin-left: -2rpx;margin-top: -2rpx;width: 80rpx;height: 80rpx;background-color: blueviolet;border-radius: 40rpx;"></image>
+        </view>
+        <view style="margin-left: 10rpx;">Noisemaker</view>
+      </view>
+      <view style="font-size: 24rpx;font-weight: 600;margin-right: 10rpx;line-height: 60rpx;">积分:<text style="font-size: 32rpx;font-size: 500;">100</text></view>
+    </view>
+    <view class="Sege_box">
+      <block wx:for="{{segeArr}}" wx:key="key" data-index="{{index}}">
+        <view class="{{index == segeIndex ? 'sege_box_activity':'Sege_box_item'}}" bindtap="exchangeSege" id="{{index}}">{{item.title}}</view>
+      </block>
+
+    </view>
+    <view style="width: 50%;margin-left: calc(50% - 90rpx);margin-top: 35px;">
+      <image bindtap="ExchangeMethod" style="width: 182rpx;height: 182rpx;" src="/pages/images/changeIcon.png"></image>
+    </view>
+  </view>
+</view>
