@@ -1,0 +1,55 @@
+<!--pages/Tabars/Classify/Pages/ProduceDetail/index.wxml-->
+<swiper style="height: 604rpx;;" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="{{activeColor}}">
+  <view wx:for="{{skuList}}" wx:key="idx" wx:for-item="item">
+    <swiper-item>
+      <image src="{{item.url}}" mode="scaleToFill" class="slide-image" />
+    </swiper-item>
+  </view>
+</swiper>
+<view class="Produce_detail_box">
+  <view class="Produce_detail_name">{{produceItem.ProduceName}}</view>
+  <view class="Produce_detail_content">{{produceItem.ProduceDetail}}</view>
+  <view class="Produce_detail_sort">{{produceItem.Sort}}<text style="font-size: 28rpx;">积分</text></view>
+</view>
+<view class="Sku_box" bindtap="ClickSkuCover">
+  <view>款式</view>
+  <view class="Sku_box_right">
+    <view>{{skuString}}</view>
+    <image style="width: 14rpx;height: 26rpx;margin-left: 5rpx;" src="/pages/images/RightRow.png"></image>
+  </view>
+</view>
+<view class="Sku_box">
+  <view>运费</view>
+  <view style="color: #EDEDED;">包邮</view>
+</view>
+<view class="bottom_box">
+  <view class="bottom_box_item bottom_box_left">前往获取积分</view>
+  <view class="bottom_box_item bottom_box_right">兑换</view>
+</view>
+<view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
+  <view class="modals-cancel" bindtap="hideModal">
+    <view catchtap="catchclick" class="bottom-dialog-body bottom-pos" animation="{{animationData}}">
+    <scroll-view style="height: 655rpx;" scroll-y="true" >
+      <view class="Sku_Covertop_box">
+        <view class="Sku_Covertop_box_left">
+          <image class="Sku_Covertop_box_image" src="{{SelectSkuItem.icon}}"></image>
+          <view class="Sku_Covertop_detail_box">
+            <view class="Sku_Covertop_detail_text">{{SelectSkuItem.SkuDetail}}</view>
+            <view class="Sku_Covertop_detail_text count_css">x1</view>
+          </view>
+        </view>
+        <image catchtap="hideModal" style="width: 32rpx;height: 32rpx;" src="/pages/images/CancerIcon.png"></image>
+      </view>
+      <view class="skuList_box">
+        <view>款式</view>
+        <view class="skuList_item_box">
+          <view  wx:for="{{skuList}}" wx:key="index" data-index="{{index}}" class="skuList_item {{item.isSelect? 'skuList_item_select':''}}" catchtap="clickItemMethod" >{{item.SkuDetail}}</view>
+        </view>
+      </view>
+
+    </scroll-view>
+
+    </view>
+  </view>
+
+</view>

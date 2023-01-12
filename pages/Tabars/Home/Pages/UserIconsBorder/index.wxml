@@ -1,6 +1,6 @@
 <view class="list_bg">
   <view class="list_item" wx:for="{{list}}" wx:key="index">
-    <image style="width: 80px;height: 92px;" mode="aspectFit" src="{{item.dataImage}}"></image>
+    <image style="width: 160rpx;height: 184rpxpx;" mode="aspectFit" src="{{item.dataImage}}"></image>
     <view>{{item.ExchangeName}}</view>
     <view>已获得:{{item.count > 0 ? item.count:0}}</view>
   </view>

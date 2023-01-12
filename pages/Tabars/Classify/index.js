@@ -1,20 +1,56 @@
 // pages/Tabars/Classify/index.js
+import AV from '../../../libs/av-core-min.js'
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    items: [{}, {}, {}]
+    items: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    this.loadInfo()
   },
+  ClickProduce(e) {
+    let index = e.currentTarget.dataset.index
+    if (index != undefined) {
+      let item = this.data.items[index]
+      console.log(item)
+      wx.navigateTo({
+        url: '/pages/Tabars/Classify/Pages/ProduceDetail/index?item=' + JSON.stringify(item),
+      })
+    }
+  },
+  loadInfo() {
+    let query = new AV.Query('RewardProduceList')
+    query.find().then((list) => {
 
+      let arr = Array.from(list)
+      var listArr = []
+      for (var i = 0; i < arr.length; i++) {
+        let item = arr[i]
+        let temp = {}
+        temp.produceid = item.id
+        temp.ProduceName = item.attributes.ProduceName
+        temp.Sort = item.attributes.Sort
+        temp.ProduceDetail = item.attributes.ProduceDetail
+        if (item.attributes.Icon) {
+          temp.Icon = item.attributes.Icon.attributes.url
+        }
+        listArr.push(temp)
+
+      }
+      console.log(listArr)
+      this.setData({
+        items: listArr
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

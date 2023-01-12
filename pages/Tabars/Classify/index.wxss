@@ -1,4 +1,25 @@
 /* pages/Tabars/Classify/index.wxss */
+.item_Sort{
+  margin-left: 26rpx;
+  width: calc(100% - 52rpx);
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #E4AA45;
+}
+.item_name{
+  margin-left: 26rpx;
+  margin-top: 8rpx;
+  width: calc(100% - 52rpx);
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #EDEDED;
+}
+.item_image{
+  width: 270rpx ;
+  margin-top: 26rpx;
+  height: 270rpx;
+  margin-left: 26rpx;
+}
 .list_bg{
   display: flex;
   flex-flow: wrap;

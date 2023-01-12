@@ -126,23 +126,14 @@ this.loadInfo()
     }, (error) => {
 
     })
-
-
     // let PromiseArr = []
-  
     // console.log(userinfoid)
-
-
     // countQuery.count().then((count) =>{
     // console.log(count)
     // },(error) =>{
-
     // })
-
     //     PromiseArr.push(new Promise((reslove,reject) =>{
     // //这里写你想要阻塞的函数 ,比如wx.request 啊 wx.cloud.uploadfile啊 等等
-
-
     //       success:res =>{
     //         //这里写逻辑，比如获取图片云存储的真实地址 this.data.imagePath = res.fileId 等等
     //    reslove()

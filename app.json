@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/Tabars/LanchPage/index",
     "pages/Tabars/Home/index",
     "pages/Tabars/Classify/index",
     "pages/Tabars/ShopCard/index",
@@ -14,7 +15,9 @@
     "pages/Tabars/Home/Pages/AlumsList/index",
     "pages/Tabars/Home/Pages/Cards/index",
     "pages/Tabars/Mine/Pages/EditAddress/index",
-    "pages/Tabars/Home/Pages/ExchangeReward/index"
+    "pages/Tabars/Home/Pages/ExchangeReward/index",
+    "pages/Tabars/Classify/Pages/ProduceDetail/index"
+   
   ],
   "window": {
     "backgroundTextStyle": "light",

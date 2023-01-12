@@ -1,5 +1,8 @@
 <!--pages/Tabars/Classify/index.wxml-->
 <view class="list_bg">
- <view class="list_item" wx:for="{{items}}" wx:key="item">
- </view>
+  <view bindtap="ClickProduce" class="list_item" wx:for="{{items}}" wx:key="index" data-index="{{index}}">
+    <image class="item_image" src="{{item.Icon}}"></image>
+    <view class="item_name">{{item.ProduceName}}</view>
+    <view class="item_Sort">{{item.Sort}}<text style="font-size: 20rpx;font-weight: 400;">积分</text></view>
+  </view>
 </view>

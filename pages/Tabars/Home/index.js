@@ -49,25 +49,7 @@ Page({
    */
   onLoad(options) {
     // console.log(app.globalData.userInfo.nickname)
-    if (app.globalData.userinfoid) {
-      this.loadInfo()
-      let users = app.globalData.userInfo
-      this.setData({
-        uInfo: users
-      })
-    } else {
-      app.userInfoCallback = res => {
-
-        this.loadInfo()
-        let users = app.globalData.userInfo
-        this.setData({
-          uInfo: users
-        })
-      }
-    }
-
-    this.loadInfo()
-
+    
 
   },
   GotoExchangePage() {
@@ -75,45 +57,45 @@ Page({
       url: '/pages/Tabars/Home/Pages/ExchangeReward/index',
     })
   },
-  loadInfo() {
+  // loadInfo() {
 
-    let query = new AV.Query("ActivityUserGetForwardRecord")
-    let userinfoid = app.globalData.userinfoid
-    let userPoint = AV.Object.createWithoutData('UserInfo', userinfoid);
-    query.equalTo("GetRewarduserInfo", userPoint)
-    query.include("Reward")
-    // query.include("Reward.ActivityId")
-    query.find().then((list) => {
-      let arr = Array.from(list)
-      var getSort = 0
-      for (var i = 0; i < arr.length; i++) {
-        let item = arr[i]
-        let sort = item.attributes.Reward.attributes.ReWardSort
-        getSort += sort
-      }
-      //  console.log(getSort)
-      let freeQuery = new AV.Query("freeSortMap")
-      freeQuery.equalTo("userInfo", userPoint)
-      freeQuery.find().then((freeList) => {
-        var freeSort = 0
-        let freeArr = Array.from(freeList)
-        for (var i = 0; i < freeArr.length; i++) {
-          let freeItem = freeArr[i]
-          let free = freeItem.attributes.FreeSort
-          freeSort += free
-        }
-        this.setData({
-          Sort: getSort - freeSort
-        })
+  //   let query = new AV.Query("ActivityUserGetForwardRecord")
+  //   let userinfoid = app.globalData.userinfoid
+  //   let userPoint = AV.Object.createWithoutData('UserInfo', userinfoid);
+  //   query.equalTo("GetRewarduserInfo", userPoint)
+  //   query.include("Reward")
+  //   // query.include("Reward.ActivityId")
+  //   query.find().then((list) => {
+  //     let arr = Array.from(list)
+  //     var getSort = 0
+  //     for (var i = 0; i < arr.length; i++) {
+  //       let item = arr[i]
+  //       let sort = item.attributes.Reward.attributes.ReWardSort
+  //       getSort += sort
+  //     }
+  //     //  console.log(getSort)
+  //     let freeQuery = new AV.Query("freeSortMap")
+  //     freeQuery.equalTo("userInfo", userPoint)
+  //     freeQuery.find().then((freeList) => {
+  //       var freeSort = 0
+  //       let freeArr = Array.from(freeList)
+  //       for (var i = 0; i < freeArr.length; i++) {
+  //         let freeItem = freeArr[i]
+  //         let free = freeItem.attributes.FreeSort
+  //         freeSort += free
+  //       }
+  //       this.setData({
+  //         Sort: getSort - freeSort
+  //       })
 
-      })
+  //     })
 
 
-    }, (error) => {
+  //   }, (error) => {
 
-    })
+  //   })
 
-  },
+  // },
 
 
   getSmsmMethod() {
@@ -155,6 +137,23 @@ Page({
         selected: 0
       })
     }
+    if (app.globalData.userinfoid) {
+      this.loadAllSort()
+      let users = app.globalData.userInfo
+      this.setData({
+        uInfo: users
+      })
+    } else {
+      app.userInfoCallback = res => {
+
+        this.loadAllSort()
+        let users = app.globalData.userInfo
+        this.setData({
+          uInfo: users
+        })
+      }
+    }
+    this.loadAllSort()
   },
 
 
@@ -191,5 +190,41 @@ Page({
    */
   onShareAppMessage() {
 
-  }
+  },
+  loadAllSort() {
+
+    let userinfoid = app.globalData.userinfoid
+    if (userinfoid == undefined) {
+      return
+    }
+    let query = new AV.Query('RewardMeltListMap')
+    let userPoint = AV.Object.createWithoutData('UserInfo',userinfoid);
+    query.equalTo('Owner', userPoint)
+    query.include('MeltPoint')
+    query.find().then((mapList) => {
+      let list = Array.from(mapList)
+      var Sort = 0
+      for (var i = 0; i < list.length; i++) {
+        let item = list[i]
+        let itemSort = item.attributes.MeltPoint.attributes.Sort
+        Sort += itemSort
+      }
+      let freeQuery = new AV.Query('RewardFreeList')
+      freeQuery.equalTo('Owner', userPoint)
+      freeQuery.include('SkuPoint')
+      freeQuery.find().then((freeList) => {
+        var freeSort = 0
+        let frees = Array.from(freeList)
+        for (var i = 0; i < frees.length; i++) {
+          let item = frees[i]
+          let sorts = item.attributes.SkuPoint.attributes.freeSort
+          freeSort += sorts
+        }
+        let allSort = (Sort - freeSort) > 0 ? (Sort - freeSort) : 0
+        this.setData({
+          Sort: allSort
+        })
+      })
+    })
+  },
 })

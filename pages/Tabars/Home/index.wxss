@@ -44,7 +44,7 @@
   align-items: center;
   justify-content: space-between;
   height: 114rpx;
-  margin: 0 46rpx 0 46px;
+  margin: 0 46rpx 0 46rpx;
   font-size: 32rpx;
   font-weight: 500;
   color: #EDEDED;

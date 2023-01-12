@@ -1,0 +1,5 @@
+<!--pages/Tabars/LanchPage/index.wxml-->
+<view style="width: 100%;height: {{height}}rpx;background-color: brown;">
+  <image style="width: 100%;height: 100%;background-color: chartreuse;" src="{{url}}"></image>
+</view>
+
