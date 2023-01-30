@@ -1,0 +1,34 @@
+<!--pages/Tabars/Mine/Pages/OrderDetail/index.wxml-->
+<view class="order_detail_title">收件人信息</view>
+<view class="oder_detail_box addres_box">
+  <view>收件人：{{orderDetail.address.name}}</view>
+  <view>手机号：{{orderDetail.address.phoneNumber}}</view>
+  <view>收件人：{{orderDetail.address.address}}{{orderDetail.address.detail}}</view>
+</view>
+<view class="order_detail_title">订单详情</view>
+<view class="oder_detail_box detail_box">
+  <view class="detail_box_top">
+    <image class="produce_image" src="{{orderDetail.skuPoint.icon}}"></image>
+    <view class="produce_Detail_box">
+     <view>{{orderDetail.skuPoint.SkuDetail}}</view>
+     <view class="Produce_count">x1</view>
+    </view>
+  </view>
+  <view class="detail_box_bottom">
+  <view>订单总价(含运费)</view>
+  <view style="color: #ededed;font-weight: 400;">0￥</view>
+  </view>
+  <view class="detail_box_bottom">
+  <view>所需积分</view>
+  <view style="color: #ededed;font-weight: 400;">{{orderDetail.skuPoint.freeSort}}</view>
+  </view>
+  <view class="detail_box_bottom">
+  <view>创建时间</view>
+  <view style="color: #ededed;font-weight: 400;">{{orderDetail.createAt}}</view>
+  </view>
+</view>
+<view class="order_detail_title">物流详情</view>
+<view class="tracking_box">
+  <view>物流单号</view>
+  <view style="color: #ededed;font-weight: 400;">{{orderDetail.tracking_num}}</view>
+  </view>

@@ -194,6 +194,7 @@ Page({
   loadAllSort() {
 
     let userinfoid = app.globalData.userinfoid
+
     if (userinfoid == undefined) {
       return
     }

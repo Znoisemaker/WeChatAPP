@@ -13,9 +13,19 @@ Page({
   EditAddressClick(e){
     let index = e.currentTarget.dataset.index
     let item = this.data.address[index]
+
     wx.navigateTo({
       url: '/pages/Tabars/Mine/Pages/EditAddress/index?isnew=false&item=' + JSON.stringify(item),
     })
+  },
+  selectAddressMethod(e){
+    let index = e.currentTarget.dataset.index
+    let item = this.data.address[index]
+    const ecentChannel = this.getOpenerEventChannel()
+    ecentChannel.emit('getBackAddress',{
+      BackAddress:item 
+    })
+    wx.navigateBack()
   },
   /**
    * 生命周期函数--监听页面加载

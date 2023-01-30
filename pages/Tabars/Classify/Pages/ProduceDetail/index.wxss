@@ -9,11 +9,13 @@ min-width: 100rpx;
 text-align: center;
 color: #B5B2B2;
 font-size: 32rpx;
-height: 64rpx;
-line-height: 64rpx;
+height: 54rpx;
+line-height: 54rpx;
+padding: 5rpx 20rpx;
 }
 .skuList_item_select{
   border: solid 2rpx  #EDEDED;
+  padding: 4rpx 20rpx;
 }
 .skuList_item_box{
   display: flex;
@@ -32,6 +34,10 @@ line-height: 64rpx;
 .count_css{
   color: #9E9E9E;
   font-weight: 400;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 .Sku_Covertop_detail_box{
   display: flex;
@@ -74,9 +80,13 @@ line-height: 64rpx;
 }
 .bottom_box_left{
   background-color: #FFFFFF;
+  
 }
 .bottom_box_right{
   background-color: #FFB738;
+}
+.bottom_box_right_enable{
+  background-color: #838383;
 }
 
 .bottom_box{

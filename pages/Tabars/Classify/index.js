@@ -14,13 +14,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    this.loadInfo()
+    
   },
   ClickProduce(e) {
     let index = e.currentTarget.dataset.index
     if (index != undefined) {
       let item = this.data.items[index]
-      console.log(item)
+     
       wx.navigateTo({
         url: '/pages/Tabars/Classify/Pages/ProduceDetail/index?item=' + JSON.stringify(item),
       })
@@ -69,6 +69,7 @@ Page({
         selected: 1
       })
     }
+    this.loadInfo()
   },
 
 

@@ -1,0 +1,109 @@
+/* pages/Tabars/Classify/Pages/SureOrder/index.wxss */
+
+.add_address{
+  position: fixed;
+  bottom: 96rpx;
+  width: calc(100% - 144rpx) ;
+  height: 116rpx;
+  border-radius: 20rpx;
+  background-color: #FFB738;
+  margin-left: 72rpx;
+  text-align: center;
+  line-height: 116rpx;
+  color: #141413;
+  font-weight: 500;
+  font-size: 32rpx;
+}
+.order_price{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 20rpx;
+  width: calc(100% - 40rpx);
+}
+.Produce_count{
+  color: #9E9E9E;
+}
+.Produce_name{
+  color: #EDEDED;
+  flex-wrap: wrap;
+}
+.Produce_detai_box{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+  min-height: 170rpx;
+  width: 100%;
+  font-size: 32rpx;
+  font-weight: 500;
+}
+.Procduce_left_chid_box{
+  min-height: 170rpx;
+  width: calc(100% - 170rpx);
+  margin-left: 10rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.produce_image{
+  width: 190rpx;
+  height: 170rpx;
+  margin-left: 20rpx;
+}
+.Procduce_box_left{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 220rpx;
+  margin-top: 10rpx;
+}
+.Procduce_box{
+  width: calc(100% - 80rpx);
+  min-height: 332rpx;
+  background-color: #2B2B2B;
+  margin-left: 40rpx;
+  margin-top: 10rpx;
+  border-radius: 24rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #9E9E9E;
+  
+}
+.address_box_right{
+  width: 20rpx;
+  height: 36rpx;
+  padding-right: 20rpx;
+}
+.address_box_left{
+  margin-left: 20rpx;
+  color: #EDEDED;
+  font-size: 32rpx;
+  font-weight: 500;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  height: calc(100% - 20rpx);
+  margin-top: 20rpx;
+  width: calc(100% - 40rpx);
+ 
+}
+.address_box{
+  width: calc(100% - 80rpx);
+  min-height: 190rpx;
+  background-color: #2B2B2B;
+  margin-left: 40rpx;
+  margin-top: 10rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 24rpx;
+  margin-bottom: 20rpx;
+}
+.title_Box{
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #555555;
+  margin-left: 40rpx;
+}

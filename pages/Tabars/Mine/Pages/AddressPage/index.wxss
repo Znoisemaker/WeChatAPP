@@ -7,14 +7,14 @@ display: flex;
 }
 .address_item_right{
   color: #FFB738;
-  font-size: 16px;
+  font-size: 32rpx;
   font-weight: 500;
  flex-shrink: 0;
 }
 .address_item_left{
   
   color: #EDEDED;
-  font-size: 16px;
+  font-size: 32rpx;
   font-weight: 500;
   width: calc(100% - 50px);
  
@@ -23,26 +23,26 @@ display: flex;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 93px;
+  height: 186rpx;
   width: calc(100% - 60px);
-  margin-left: 20px;
+  margin-left: 40rpx;
   background-color: #201F1E;
-  margin-top: 27px;
-  border-radius: 12px;
-  padding-left: 10px;
-  padding-right: 10px;
+  margin-top: 54rpx;
+  border-radius: 24rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
 }
 .add_address{
   position: fixed;
-  bottom: 48px;
-  width: calc(100% - 72px) ;
-  height: 58px;
-  border-radius: 10px;
+  bottom: 96rpx;
+  width: calc(100% - 144rpx) ;
+  height: 116rpx;
+  border-radius: 20rpx;
   background-color: #FFB738;
-  margin-left: 36px;
+  margin-left: 72rpx;
   text-align: center;
-  line-height: 58px;
+  line-height: 116rpx;
   color: #141413;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 32rpx;
 }

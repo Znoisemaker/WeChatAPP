@@ -11,7 +11,7 @@
       </view>
     </view>
   </view>
-  <view class="exchange_History_box">
+  <view class="exchange_History_box" bindtap="clickOrderList">
     <view class="exchange_History_title">兑换记录</view>
   </view>
   <view class="UserInfo_tool_box">

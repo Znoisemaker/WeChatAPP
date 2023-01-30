@@ -25,7 +25,6 @@ App({
   },
   getSmsmMethod: function () {
 
-    console.log(1)
     wx.request({
       url: 'https://appapi.noisemaker.cn' + '/1.1/requestSmsCode',
       method: "POST",
@@ -118,7 +117,6 @@ App({
    
     wx.login({
       success: (res) => {
-        // console.log(res)
         wx.request({
           url: 'https://share.noisemaker.cn/1.1/functions/getWXUnid',
           method: "POST",
@@ -131,7 +129,7 @@ App({
             "js_code": res.code
           },
           success: (rr) => {
-            // console.log(rr)
+           
             let unionid = rr.data.result.unionid
             let uid = rr.data.result.openid
             let session_key = rr.data.result.session_key
@@ -141,6 +139,7 @@ App({
               openid: uid,
               unionid: unionid
             }
+            // console.log(thirdPartyData)
             AV.User.loginWithAuthData(thirdPartyData, "weixin", { failOnNotExist: true }).then((s) => {
               this.getCurrentUserInfo(s.id)
               // console.log("login Success")

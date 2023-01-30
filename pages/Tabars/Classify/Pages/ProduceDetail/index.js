@@ -16,9 +16,9 @@ Page({
     produceItem: '',
     hideModal: true, //模态框的状态 true-隐藏 false-显示
     animationData: {}, //
-    skuString: '未选择',
     SelectSkuItem: '',
-    skuList: []
+    skuList: [],
+    Sort: 0
   },
 
   /**
@@ -26,10 +26,86 @@ Page({
    */
   onLoad(options) {
     let item = JSON.parse(options.item)
-    this.setData({
-      produceItem: item
+    this.loadInfo(item.produceid, item)
+
+  },
+  loadAllSort() {
+
+    let userinfoid = app.globalData.userinfoid
+    if (userinfoid == undefined) {
+      return
+    }
+    let query = new AV.Query('RewardMeltListMap')
+    let userPoint = AV.Object.createWithoutData('UserInfo', userinfoid);
+    query.equalTo('Owner', userPoint)
+    query.include('MeltPoint')
+    query.find().then((mapList) => {
+      let list = Array.from(mapList)
+      var Sort = 0
+      for (var i = 0; i < list.length; i++) {
+        let item = list[i]
+        let itemSort = item.attributes.MeltPoint.attributes.Sort
+        Sort += itemSort
+      }
+      let freeQuery = new AV.Query('RewardFreeList')
+      freeQuery.equalTo('Owner', userPoint)
+      freeQuery.include('SkuPoint')
+      freeQuery.find().then((freeList) => {
+        var freeSort = 0
+        let frees = Array.from(freeList)
+        for (var i = 0; i < frees.length; i++) {
+          let item = frees[i]
+          let sorts = item.attributes.SkuPoint.attributes.freeSort
+          freeSort += sorts
+        }
+        let allSort = (Sort - freeSort) > 0 ? (Sort - freeSort) : 0
+        this.setData({
+          Sort: allSort
+        })
+      })
     })
-    this.loadInfo(item.produceid)
+  },
+  GotoGetSort() {
+    this.hideModal()
+    wx.navigateTo({
+      url: '/pages/Tabars/Home/Pages/ExchangeReward/index',
+    })
+  },
+  GotoSureOrder() {
+    if (this.data.hideModal) {
+      this.ClickSkuCover()
+    } else {
+
+
+      let skuItem = this.data.SelectSkuItem
+
+      if (!this.data.SelectSkuItem) {
+        wx.showToast({
+          title: '请选择您的款式',
+          icon: 'none'
+        })
+        return
+      }
+
+      if (skuItem.limitCount <= 0) {
+        wx.showToast({
+          title: '库存不足，请联系客服',
+          icon: 'none'
+        })
+        return
+      }
+      if (this.data.Sort < skuItem.freeSort) {
+        wx.showToast({
+          title: '您的积分不足',
+          icon: 'none'
+        })
+        return
+      }
+      this.hideModal()
+      wx.navigateTo({
+        url: '/pages/Tabars/Classify/Pages/SureOrder/index?item=' + JSON.stringify(this.data.SelectSkuItem),
+      })
+    }
 
   },
   clickItemMethod(e) {
@@ -43,12 +119,11 @@ Page({
       SelectSkuItem: this.data.skuList[index]
     })
   },
-  loadInfo(produceid) {
+  loadInfo(produceid, produceItem) {
     let query = new AV.Query('RewardSkuList')
     let producePoint = AV.Object.createWithoutData('RewardProduceList', produceid)
     query.equalTo('Produce', producePoint)
     query.find().then((list) => {
-      console.log(list)
       let arr = Array.from(list)
       var listArr = []
       for (var i = 0; i < arr.length; i++) {
@@ -58,19 +133,24 @@ Page({
         temp.SkuDetail = item.attributes.SkuDetail
         temp.freeSort = item.attributes.freeSort
         temp.limitCount = item.attributes.limitCount
-        if (item.attributes.icon) {
-          temp.icon = item.attributes.icon.attributes.url
-        }
+        temp.icon = item.attributes.icon.attributes.url
         temp.isSelect = false
         listArr.push(temp)
       }
-      if (listArr.length > 0) {
-        listArr[0].isSelect = true
-        this.setData({
-          skuList: listArr,
-          SelectSkuItem: listArr[0]
-        })
+
+      var seletItem = ''
+      for (var i = 0; i < listArr.length; i++) {
+        if (listArr[i].limitCount > 0) {
+          listArr[i].isSelect = true
+          seletItem = listArr[i]
+          break
+        }
       }
+      this.setData({
+        skuList: listArr,
+        SelectSkuItem: seletItem,
+        produceItem: produceItem
+      })
 
     })
   },
@@ -95,7 +175,6 @@ Page({
   },
   // 隐藏遮罩层
   hideModal: function (e) {
-
     var that = this;
     var animation = wx.createAnimation({
       duration: 800, //动画的持续时间 默认400ms 数值越大，动画越慢 数值越小，动画越快
@@ -108,7 +187,6 @@ Page({
         hideModal: true
       })
     }, 720) //先执行下滑动画，再隐藏模块
-
   },
 
   //动画集
@@ -137,7 +215,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    if (this.data.produceItem != '') {
+      this.loadInfo(this.data.produceItem.produceid, this.data.produceItem)
+      this.loadAllSort()
+    }
   },
 
   /**

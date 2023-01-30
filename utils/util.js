@@ -8,6 +8,30 @@ const formatTime = date => {
 
   return `${[year, month, day].map(formatNumber).join('/')} ${[hour, minute, second].map(formatNumber).join(':')}`
 }
+const FormatChinesTimeToSecond = time => { ////中国标准时间转年月日时分秒
+  var date = new Date(time)
+  var y = date.getFullYear()
+  var m = date.getMonth() + 1
+  m = m < 10 ? '0' + m : m
+  var d = date.getDate()
+  d = d < 10 ? '0' + d : d
+  var h = date.getHours()
+  h = h < 10 ? '0' + h : h
+  var minute = date.getMinutes()
+  minute = minute < 10 ? '0' + minute : minute
+  var s = date.getSeconds()
+  s = s < 10 ? '0' + s : s
+  return y + '年' + m + '月' + d + '日 ' + h + ':' + minute + ':' + s
+}
+const FormatChinesTimeToDay = time  =>{ //中国标准时间转年月日
+  var date = new Date(time)
+  var y = date.getFullYear()
+  var m = date.getMonth() + 1
+  m = m < 10 ? '0' + m : m
+  var d = date.getDate()
+  d = d < 10 ? '0' + d : d
+  return y + '年' + m + '月' + d + '日'
+}
 
 const formatNumber = n => {
   n = n.toString()
@@ -47,5 +71,7 @@ module.exports = {
   formatTime,
   getCurrentDate,
   getCurrentTime,
-  getEndDate
+  getEndDate,
+  FormatChinesTimeToDay,
+  FormatChinesTimeToSecond
 }

@@ -1,0 +1,32 @@
+<!--pages/Tabars/Classify/Pages/SureOrder/index.wxml-->
+<view class="title_Box">收件人信息</view>
+<view class="address_box" bindtap="ToseletAddress">
+  <view class="address_box_left">
+    <view>收件人：{{address.name}}</view>
+    <view>手机号：{{address.phoneNumber}}</view>
+    <view style="flex-wrap: wrap;margin-bottom: 20rpx;">收件地址：{{address.address}}{{address.detail}}</view>
+  </view>
+  <image class="address_box_right" src="/pages/images/RightRow.png"></image>
+</view>
+<view class="title_Box">收件人信息</view>
+<view class="Procduce_box">
+  <view class="Procduce_box_left">
+    <image class="produce_image" src="{{produce.icon}}"></image>
+    <view class="Procduce_left_chid_box">
+      <view class="Produce_detai_box">
+        <view class="Produce_name">{{produce.SkuDetail}}</view>
+        <view class="Produce_count">x1</view>
+      </view>
+      <image class="address_box_right" src="/pages/images/RightRow.png"></image>
+    </view>
+  </view>
+  <view class="order_price">
+    <view>订单总价(含运费)</view>
+    <view>￥0</view>
+  </view>
+  <view class="order_price">
+    <view>所需积分</view>
+    <view>{{produce.freeSort}}</view>
+  </view>
+</view>
+<view bindtap="SureExchange" class="add_address">确认兑换</view>

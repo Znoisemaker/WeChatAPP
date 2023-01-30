@@ -16,8 +16,10 @@
     "pages/Tabars/Home/Pages/Cards/index",
     "pages/Tabars/Mine/Pages/EditAddress/index",
     "pages/Tabars/Home/Pages/ExchangeReward/index",
-    "pages/Tabars/Classify/Pages/ProduceDetail/index"
-   
+    "pages/Tabars/Classify/Pages/ProduceDetail/index",
+    "pages/Tabars/Classify/Pages/SureOrder/index",
+    "pages/Tabars/Mine/Pages/OrderList/index",
+    "pages/Tabars/Mine/Pages/OrderDetail/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

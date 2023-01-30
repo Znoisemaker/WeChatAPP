@@ -1,0 +1,76 @@
+/* pages/Tabars/Mine/Pages/OrderDetail/index.wxss */
+.tracking_box{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #9E9E9E;
+  font-size: 32rpx;
+  font-weight: 500;
+  min-height: 76rpx;
+  width: calc(100% - 120rpx);
+  padding: 20rpx;
+  background-color: #201f1e;
+  margin-left: 40rpx;
+  border-radius: 24rpx;
+}
+.Produce_count{
+  color: #9E9E9E;
+}
+.produce_Detail_box{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+  min-height: 170rpx;
+  padding-left: 20rpx;
+  color: #ededed;
+  font-size: 32rpx;
+  font-weight: 500;
+}
+.produce_image{
+  width: 190rpx;
+  height: 170rpx;
+}
+.detail_box_bottom{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #9E9E9E;
+  font-size: 32rpx;
+  font-weight: 500;
+  margin-top: 20rpx;
+}
+.detail_box_top{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  min-height:220rpx ;
+}
+.detail_box{
+  min-height: 400rpx;
+  padding: 20rpx;
+  padding-top: 0rpx;
+}
+
+.addres_box{
+  color: #ededed;
+  min-height: 180rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  padding: 20rpx;
+}
+.oder_detail_box{
+  margin-left: 40rpx;
+  width: calc(100% - 120rpx);
+  background-color: #201F1E;
+  border-radius: 24rpx;
+}
+
+
+.order_detail_title{
+
+  margin-left: 40rpx;
+  color: #555555;
+  margin-top: 36rpx;
+  margin-bottom: 20rpx;
+}

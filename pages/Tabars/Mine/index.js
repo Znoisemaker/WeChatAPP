@@ -206,7 +206,11 @@ Page({
     this.loadInfo()
     this.loadAllSort()
   },
-
+  clickOrderList(){
+  wx.navigateTo({
+    url: '/pages/Tabars/Mine/Pages/OrderList/index',
+  })
+},
   /**
    * 生命周期函数--监听页面隐藏
    */

@@ -1,0 +1,26 @@
+<!--pages/Tabars/Mine/Pages/OrderList/index.wxml-->
+<view wx:for="{{orderList}}" wx:key="index">
+  <view class="order_list_item" data-index="{{index}}" bindtap="OrderClickItem">
+    <view class="time_box">{{item.createdAt}}</view>
+    <view class="Procduce_box">
+      <view class="Procduce_box_left">
+        <image class="produce_image" src="{{item.icon}}"></image>
+        <view class="Procduce_left_chid_box">
+          <view class="Produce_detai_box">
+            <view class="Produce_name">{{item.SkuDetail}}</view>
+            <view class="Produce_count">x1</view>
+          </view>
+          <image class="address_box_right" src="/pages/images/RightRow.png"></image>
+        </view>
+      </view>
+      <view class="order_price">
+        <view>订单总价(含运费)</view>
+        <view>￥0</view>
+      </view>
+      <view class="order_price">
+        <view>所需积分</view>
+        <view>{{item.freeSort}}</view>
+      </view>
+    </view>
+  </view>
+</view>

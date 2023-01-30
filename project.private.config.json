@@ -4,7 +4,7 @@
   "setting": {
     "compileHotReLoad": true,
     "preloadBackgroundData": false,
-    "urlCheck": true,
+    "urlCheck": false,
     "bigPackageSizeSupport": false,
     "autoAudits": false,
     "ignoreDevUnusedFiles": false
