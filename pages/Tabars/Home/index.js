@@ -40,7 +40,9 @@ Page({
     interval: 3000, //间隔时间
     duration: 300, //滑动时间
     uInfo: '',
-    Sort: 0
+    Sort: 0,
+    AllChioGetList:[],
+    SortArr:[]
 
   },
 
@@ -191,41 +193,164 @@ Page({
   onShareAppMessage() {
 
   },
+
+
   loadAllSort() {
-
-    let userinfoid = app.globalData.userinfoid
-
-    if (userinfoid == undefined) {
-      return
-    }
-    let query = new AV.Query('RewardMeltListMap')
-    let userPoint = AV.Object.createWithoutData('UserInfo',userinfoid);
-    query.equalTo('Owner', userPoint)
-    query.include('MeltPoint')
-    query.find().then((mapList) => {
-      let list = Array.from(mapList)
-      var Sort = 0
-      for (var i = 0; i < list.length; i++) {
-        let item = list[i]
-        let itemSort = item.attributes.MeltPoint.attributes.Sort
-        Sort += itemSort
-      }
-      let freeQuery = new AV.Query('RewardFreeList')
-      freeQuery.equalTo('Owner', userPoint)
-      freeQuery.include('SkuPoint')
-      freeQuery.find().then((freeList) => {
+    if (app.globalData.userinfoid) {
+      let that = this
+      var allRequire = []
+      let promise = new Promise((resolve, reject) => {
+        that.loadExchangeHistory(app.globalData.userinfoid, resolve)
+      })
+      let promise2 = new Promise((resolve, reject) => {
+        this.LoadSelfDesignation(app.globalData.userinfoid, resolve)
+      })
+      allRequire.push(promise)
+      allRequire.push(promise2)
+      Promise.all(allRequire).then(() => {
+        var allSort = 0
         var freeSort = 0
-        let frees = Array.from(freeList)
-        for (var i = 0; i < frees.length; i++) {
-          let item = frees[i]
-          let sorts = item.attributes.SkuPoint.attributes.freeSort
-          freeSort += sorts
+        let AllChioGetList = that.data.AllChioGetList
+        let SortArr = that.data.SortArr
+        for (var i = 0; i < AllChioGetList.length; i++) {
+          allSort += AllChioGetList[i].ReWardSort
         }
-        let allSort = (Sort - freeSort) > 0 ? (Sort - freeSort) : 0
-        this.setData({
-          Sort: allSort
+       
+        for (var i = 0; i < SortArr.length; i++) {
+          freeSort += SortArr[i].FreeSort
+        }
+     
+        var sort = (allSort - freeSort)
+        
+        app.globalData.mySort = sort
+        that.setData({
+          Sort: sort
         })
+      })
+    }
+  },
+  loadExchangeHistory(userInfoid, restt) {
+    let that = this
+    let userInfoPoint = AV.Object.createWithoutData("UserInfo", userInfoid);
+    let countQuery = new AV.Query("RewardFreeList")
+    countQuery.equalTo("Owner", userInfoPoint)
+    countQuery.count().then((count) => {
+      let temPage = count / 50 + 1
+      var allRequire = []
+      for (var i = 0; i < temPage; i++) {
+        let promise = new Promise((resolve, reject) => {
+          let query = new AV.Query("RewardFreeList")
+          query.equalTo("Owner", userInfoPoint)
+          query.limit(50)
+          query.skip(50 * i)
+          query.include('SkuPoint')
+          query.find().then((list) => {
+            resolve(list)
+          })
+        })
+        allRequire.push(promise)
+      }
+      Promise.all(allRequire).then((result) => {
+        var SortArr = []
+        var list = result.reduce((a, b) => a.concat(b))
+       
+        for (var i = 0; i < list.length; i++) {
+          let tem = list[i];
+          let dic = {};
+          let attributes = tem.attributes.SkuPoint.attributes
+          if (attributes) {
+            dic["FreeSort"] = attributes.freeSort
+            SortArr.push(dic)
+          }
+        }
+        that.setData({
+          SortArr: SortArr
+        })
+        restt()
       })
     })
   },
+
+  LoadSelfDesignation(userInfoid, restt) {
+    let userInfoPoint = AV.Object.createWithoutData("UserInfo", userInfoid);
+    let countQuery = new AV.Query("RewardMeltListMap")
+    countQuery.equalTo('Owner', userInfoPoint)
+    countQuery.count().then((count) => {
+      let temPage = count / 50 + 1
+      var allRequire = []
+      for (var i = 0; i < temPage; i++) {
+        let promise = new Promise((resolve, reject) => {
+          let query = new AV.Query("RewardMeltListMap")
+          query.equalTo('Owner', userInfoPoint)
+          query.include('MeltPoint')
+          query.descending("createdAt")
+          query.limit(50)
+          query.skip(50 * i)
+          query.find().then((list) => {
+            resolve(list)
+
+          })
+        })
+        allRequire.push(promise)
+      }
+      Promise.all(allRequire).then((result) => {
+        var AllChioGetList = []
+        var list = result.reduce((a, b) => a.concat(b))
+
+        for (var i = 0; i < list.length; i++) {
+          let tem = list[i];
+          let dic = {};
+          let attributes = tem.attributes.MeltPoint.attributes
+        if (attributes) {
+          dic["ReWardSort"] = attributes.Sort
+        }
+        AllChioGetList.push(dic)
+         
+        }
+        this.setData({
+          AllChioGetList: AllChioGetList
+        })
+        restt()
+      })
+    })
+
+
+  },
+  // loadAllSort() {
+
+  //   let userinfoid = app.globalData.userinfoid
+
+  //   if (userinfoid == undefined) {
+  //     return
+  //   }
+  //   let query = new AV.Query('RewardMeltListMap')
+  //   let userPoint = AV.Object.createWithoutData('UserInfo',userinfoid);
+  //   query.equalTo('Owner', userPoint)
+  //   query.include('MeltPoint')
+  //   query.find().then((mapList) => {
+  //     let list = Array.from(mapList)
+  //     var Sort = 0
+  //     for (var i = 0; i < list.length; i++) {
+  //       let item = list[i]
+  //       let itemSort = item.attributes.MeltPoint.attributes.Sort
+  //       Sort += itemSort
+  //     }
+  //     let freeQuery = new AV.Query('RewardFreeList')
+  //     freeQuery.equalTo('Owner', userPoint)
+  //     freeQuery.include('SkuPoint')
+  //     freeQuery.find().then((freeList) => {
+  //       var freeSort = 0
+  //       let frees = Array.from(freeList)
+  //       for (var i = 0; i < frees.length; i++) {
+  //         let item = frees[i]
+  //         let sorts = item.attributes.SkuPoint.attributes.freeSort
+  //         freeSort += sorts
+  //       }
+  //       let allSort = (Sort - freeSort) > 0 ? (Sort - freeSort) : 0
+  //       this.setData({
+  //         Sort: allSort
+  //       })
+  //     })
+  //   })
+  // },
 })
